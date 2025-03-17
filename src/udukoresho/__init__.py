@@ -2,6 +2,9 @@ import matplotlib
 import matplotlib.pyplot as plt
 from dataclasses import dataclass
 from typing import Any, Tuple, List, Optional
+import platform
+import os
+
 
 
 @dataclass
@@ -42,6 +45,10 @@ def pt_to_inch(pt):
 def setup_matplotlib_for_latex(matplotlib_module: matplotlib, customizations: LatexSetupConfig = None):
     """Set up matplotlib's RC params for LaTeX plotting."""
     config = customizations or LatexSetupConfig()
+    # On MacOS, the PATH is not set correctly, so we need to add the path to the TeX binaries
+    if platform.system() == "Darwin":
+        if os.system("which kpsewhich") != 0:
+            os.environ['PATH'] += ':/Library/TeX/texbin'
     matplotlib_module.rcParams.update({
         'backend': 'ps',
         'text.latex.preamble': r"""

@@ -8,7 +8,7 @@ version = "0.0.1"
 authors = [
   { name="Vany V. Ingenzi", email="ingenzivany@gmail.com" },
 ]
-description = "A small example package"
+description = "A small package to help with my work. Mostly plotting"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
@@ -18,5 +18,6 @@ classifiers = [
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
 dependencies = [
-  "matplotlib"
+  "matplotlib", 
+  "numpy"
 ]
